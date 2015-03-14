@@ -1,2 +1,2 @@
 # SMS-API
-https://drive.google.com/file/d/0B2c4aEBfkCh2Zm9mNGJZMno1c0E/view?usp=sharing
+<a src="http://i.creativecommons.org/l/by-nc-sa/3.0/88x31.png" />
