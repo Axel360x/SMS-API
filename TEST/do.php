@@ -1,23 +1,23 @@
 <?php 
     
-   //Przyk³adowe dane wys³ane przez api 
+   //Przykï¿½adowe dane wysï¿½ane przez api 
    $kod = 'costam'; 
    $key = 'costam'; 
     
-   $zmienna = file_get_contents('http://twojastrona.pl/api.php?kod='.$kod.'&key='.$key); 
+   $zmienna = file_get_contents('http://127.0.0.1:8020/SMS-API/TEST/api.php?kod='.$kod.'&key='.$key); 
     
    if($zmienna){ 
        if($zmienna == '1'){ 
            echo 'Kod poprawny'; 
        }elseif($zmienna == '2'){ 
-           echo 'B³êdny klucz api'; 
+           echo 'Bï¿½ï¿½dny klucz api'; 
        }elseif($zmienna == '0'){ 
-           echo 'B³êdny kod sms'; 
+           echo 'Bï¿½ï¿½dny kod sms'; 
        }else{ 
-           echo 'Nieznany b³¹d'; 
+           echo 'Nieznany bï¿½ï¿½d'; 
        }    
    }else{ 
-       echo 'B³¹d po³¹czenia z operatorem'; 
+       echo 'Bï¿½ï¿½d poï¿½ï¿½czenia z operatorem'; 
    } 
     
 ?>
