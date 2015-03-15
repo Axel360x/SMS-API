@@ -10,6 +10,10 @@
    //        0 - Bledny kod 
    //        1 - Kod poprawny 
    //        2 - Bledny klucz api 
+   
+   if($kod == $key){ 
+       $status=1;
+   }
     
    if($status == 1){ 
        // Akcje do wykonania jesli status jest rowny 1 np dodanie wpln do portfela urzytkownika ktory ma przypisany dany klucz api 
