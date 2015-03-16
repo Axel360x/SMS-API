@@ -13,15 +13,12 @@
     switch($idsms)
         case (1000 < $idsms <= 3333):
         $inter = homepay;
-        mysql_select_db('sms_homepay');
     break;
         case (3333 < $idsms <= 6666):
         $inter = cashbill;
-        mysql_select_db('sms_cashbill');
     break;
         case (6666 < $idsms <= 9999):
         $inter = platnosci-online;
-        mysql_select_db('sms_cashbill');
     break;
     default:
         $status = 5; //bledne id sms
@@ -32,6 +29,19 @@
     $status = 6;
     exit;
     }
+    
+    $inter == homepay?$zapytanie = "SELECT `id`,`nazwisko`,`lata`,`punkty` FROM 'sms_'$inter WHERE 'idsms'=$idsms";
+    $inter == cashbill?$zapytanie = 
+    $inter == platnosci-online?$zapytanie = 
+    
+    
+    
+    $idzapytania = mysql_query($zapytanie);
+    while ($wiersz = mysql_fetch_row($idzapytania)) 
+    {
+    echo $wiersz[0];
+    }
+    
   
    //        0 - Bledny kod 
    //        1 - Kod poprawny 
