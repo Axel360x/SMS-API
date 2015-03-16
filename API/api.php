@@ -11,15 +11,18 @@
     // Tutaj sprawdzanie poprawnosci przeslanych danych 
     if (!empty($idsms) && $idsms <= 9999)
     switch($idsms)
-        case (1000 < $idsms < 3333):
+        case (1000 < $idsms <= 3333):
         $inter = homepay;
     break;
-        case (3333 < $idsms < 6666):
+        case (3333 < $idsms <= 6666):
         $inter = cashbill;
     break;
-        case (6666 < $idsms < 9999):
+        case (6666 < $idsms <= 9999):
         $inter = platnosci-online;
     break;
+    default:
+        $status = 5; //bledne id sms
+     break;
     endswitch;
 
   
@@ -32,8 +35,7 @@
    }elseif($status == 2){ 
        // Akcje do wykonania jesli kod api jest bledny 
    }    
-   $status=1
-    ;
+
    echo $status; //Wyswietlenie stasusu ktory umozliwa sprawdzenie poprawnosci przeslanych danych
    
    function clear($text){ // Funkcja "czyszcząca" wprowadzane dane 
