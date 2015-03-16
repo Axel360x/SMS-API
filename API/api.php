@@ -10,8 +10,18 @@
     
     
    // Tutaj sprawdzanie poprawnosci przeslanych danych 
-   // np sprawdzanie czy dany kod istanieje w bazie danych lub sprawdzanie kodu w zewnetrznym serwisie 
-   // Zmienna $status przechowuje status akcji 
+if (!empty($idsms) && $idsms <= 9999)
+switch($idsms)
+{
+ case (!empty($a) && $a > 5):
+  echo 'Pierwszy warunek spełniony';
+ break;
+
+ case $a < 5:
+  echo 'Drugi warunek spełniony';
+ break;
+}
+  
    //        0 - Bledny kod 
    //        1 - Kod poprawny 
    //        2 - Bledny klucz api 
