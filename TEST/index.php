@@ -10,6 +10,7 @@
     
    $hendle = file_get_contents("http://api.soruby.pl/sms_cecker.php?id_sms=".$id_pay."&code=".$code."&id_user=".$id_user."&coment=".$coment."&buyer=".$buyer); 
    
+   echo $hendle;
     
    if($handle){ 
        if($zhandle == '1'){ 

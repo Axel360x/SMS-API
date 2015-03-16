@@ -9,6 +9,10 @@
    $buyer = urldecode($_GET['buyer']); 
     
     
+    
+    list($a, $b, $c) = explode("", $id_sms);
+    
+    
    // Tutaj sprawdzanie poprawnosci przeslanych danych 
    // np sprawdzanie czy dany kod istanieje w bazie danych lub sprawdzanie kodu w zewnetrznym serwisie 
    // Zmienna $status przechowuje status akcji 
@@ -28,3 +32,8 @@
    echo $id_user;
    echo $coment;
    echo $buyer;
+   echo $a;
+   echo $b;
+   echo $c;
+   
+   ?>
