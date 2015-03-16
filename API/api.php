@@ -8,19 +8,20 @@
    $coment = urldecode($_GET['coment']); 
    $buyer = urldecode($_GET['buyer']); 
     
-    
-   // Tutaj sprawdzanie poprawnosci przeslanych danych 
-if (!empty($idsms) && $idsms <= 9999)
-switch($idsms)
-{
- case (!empty($a) && $a > 5):
-  echo 'Pierwszy warunek spełniony';
- break;
+    // Tutaj sprawdzanie poprawnosci przeslanych danych 
+    if (!empty($idsms) && $idsms <= 9999)
+    switch($idsms)
+        case (1000 < $idsms < 3333):
+        $inter = homepay;
+    break;
+        case (3333 < $idsms < 6666):
+        $inter = cashbill;
+    break;
+        case (6666 < $idsms < 9999):
+        $inter = platnosci-online;
+    break;
+    endswitch;
 
- case $a < 5:
-  echo 'Drugi warunek spełniony';
- break;
-}
   
    //        0 - Bledny kod 
    //        1 - Kod poprawny 
