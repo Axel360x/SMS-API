@@ -28,13 +28,21 @@
      break;
     endswitch;
 
+    if ($status != 5 && !mysql_connect('localhost', 'mysql_user', 'mysql_password')) {
+    $status = 6;
+    exit;
+    }
   
    //        0 - Bledny kod 
    //        1 - Kod poprawny 
-   //        2 - Bledny klucz api 
+   //        2 - Bledny klucz api
+   
+   //       5 - Bledna id sms
+   //       6 - Blad polaczenia z SQL
    
    if($status == 1){ 
-       // Akcje do wykonania jesli status jest rowny 1 np dodanie wpln do portfela urzytkownika ktory ma przypisany dany klucz api 
+        $zapytanie = "INSERT INTO `nba` (`id`, `nazwisko`, `lata`, `punkty` , `mistrzostwa`) VALUES ('', 'Jordan', '13', '32', '6')";
+        $idzapytania = mysql_query($zapytanie);
    }elseif($status == 2){ 
        // Akcje do wykonania jesli kod api jest bledny 
    }    
