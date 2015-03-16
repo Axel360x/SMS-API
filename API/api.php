@@ -28,11 +28,12 @@
     if ($status != 5 && !mysql_connect('localhost', 'mysql_user', 'mysql_password')) {
     $status = 6;
     exit;
+    //zamyka polaczanie
     }
     
-    $inter == homepay?$zapytanie = "SELECT `id`,`nazwisko`,`lata`,`punkty` FROM 'sms_'$inter WHERE 'idsms'=$idsms";
-    $inter == cashbill?$zapytanie = 
-    $inter == platnosci-online?$zapytanie = 
+    $inter == homepay?$zapytanie = "SELECT `id`,`cost` FROM `sms_`$inter WHERE `idsms`=$idsms";
+    $inter == cashbill?$zapytanie = "SELECT `txt`,`numer`,`cost` FROM `sms_`$inter WHERE `idsms`=$idsms";
+    $inter == platnosci-online?$zapytanie = "SELECT `cost` FROM `sms_`$inter WHERE `idsms`=$idsms"; //olac to teraz
     
     
     
