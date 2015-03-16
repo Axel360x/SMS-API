@@ -13,12 +13,15 @@
     switch($idsms)
         case (1000 < $idsms <= 3333):
         $inter = homepay;
+        mysql_select_db('sms_homepay');
     break;
         case (3333 < $idsms <= 6666):
         $inter = cashbill;
+        mysql_select_db('sms_cashbill');
     break;
         case (6666 < $idsms <= 9999):
         $inter = platnosci-online;
+        mysql_select_db('sms_cashbill');
     break;
     default:
         $status = 5; //bledne id sms
