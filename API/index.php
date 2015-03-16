@@ -3,12 +3,14 @@
    //Przykladowe dane wyslane przez api 
    $id_pay = '123';
    $code = 'afwasdcwas';
-   $id_user = 'test';
+   $id_user = 'afwasdcwas';
    $coment = urlencode('test');
    $buyer = urlencode('test');
 
     
-   $hendle = file_get_contents("http://api.soruby.pl/sms_cecker.php?id_sms=".$id_pay."&code=".$code."&id_user=".$id_user."&coment=".$coment."&buyer=".$buyer); 
+   $hendle = file_get_contents("http://s2.soruby.pl/api/api.php?idsms=".$id_pay."&code=".$code."&iduser=".$id_user."&coment=".$coment."&buyer=".$buyer); 
+   
+   ///api.php?idsms=123&code=afwasdcwas&iduser=afwasdcwas&coment=test&buyer=test
    
    echo $hendle;
     

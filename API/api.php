@@ -2,15 +2,11 @@
     
    // Filtracja przeslanych danych 
 
-   $id_sms = clear($_GET['id_sms']); 
+   $idsms = clear($_GET['id_sms']); 
    $code = clear($_GET['code']); 
-   $id_user = clear($_GET['id_user']); 
+   $iduser = clear($_GET['id_user']); 
    $coment = urldecode($_GET['coment']); 
    $buyer = urldecode($_GET['buyer']); 
-    
-    
-    
-    list($a, $b, $c) = explode("", $id_sms);
     
     
    // Tutaj sprawdzanie poprawnosci przeslanych danych 
@@ -25,15 +21,18 @@
    }elseif($status == 2){ 
        // Akcje do wykonania jesli kod api jest bledny 
    }    
-    
+   $status=1
+    ;
    echo $status; //Wyswietlenie stasusu ktory umozliwa sprawdzenie poprawnosci przeslanych danych
-   echo $id_sms;
-   echo $code;
-   echo $id_user;
-   echo $coment;
-   echo $buyer;
-   echo $a;
-   echo $b;
-   echo $c;
+   
+   function clear($text){ // Funkcja "czyszcząca" wprowadzane dane 
+       if(get_magic_quotes_gpc()){ 
+           $text = stripslashes($text); 
+       } 
+       $text = trim($text); 
+       $text = mysql_real_escape_string($text); 
+       $text = htmlspecialchars($text); 
+       return $text; 
+   } 
    
    ?>
