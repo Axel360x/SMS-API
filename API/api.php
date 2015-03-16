@@ -9,27 +9,8 @@
    $buyer = urldecode($_GET['buyer']); 
     
     // Tutaj sprawdzanie poprawnosci przeslanych danych 
-    if (!empty($idsms) && $idsms <= 9999)
-    switch($idsms)
-        case (1000 < $idsms <= 3333):
-        $inter = homepay;
-    break;
-        case (3333 < $idsms <= 6666):
-        $inter = cashbill;
-    break;
-        case (6666 < $idsms <= 9999):
-        $inter = platnosci-online;
-    break;
-    default:
-        $status = 5; //bledne id sms
-     break;
-    endswitch;
-
-    if ($status != 5 && !mysql_connect('localhost', 'mysql_user', 'mysql_password')) {
-    $status = 6;
-    exit;
-    //zamyka polaczanie
-    }
+    if (!empty($idsms) && $idsms <= 999)
+    // sprawdze to w pod // homepay i cashbill
     
     if (!$link = mysql_connect('mysql_host', 'mysql_user', 'mysql_password')) {
     $status = 6;
@@ -37,9 +18,8 @@
     }
     
     
-    $inter == homepay?$zapytanie = "SELECT `id`,`cost` FROM `sms_`$inter WHERE `idsms`=$idsms";
-    $inter == cashbill?$zapytanie = "SELECT `txt`,`numer`,`cost` FROM `sms_`$inter WHERE `idsms`=$idsms";
-    $inter == platnosci-online?$zapytanie = "SELECT `cost` FROM `sms_`$inter WHERE `idsms`=$idsms"; //olac to teraz
+    if ($inter == homepay)$zapytanie = "SELECT `id`,`cost` FROM `sms_`$inter WHERE `idsms`=$idsms";
+    if ($inter == cashbill)$zapytanie = "SELECT `txt`,`numer`,`cost` FROM `sms_`$inter WHERE `idsms`=$idsms";
     
     $idzapytania = mysql_query($zapytanie);
     while ($wiersz = mysql_fetch_row($idzapytania)) {
