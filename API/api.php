@@ -7,20 +7,37 @@
     $coment = urlencode($_GET['coment']);
     $buyer = urlencode($_GET['buyer']);
 	
+	$status=1;
 	
-   // Tutaj sprawdzanie poprawnośći przesłanych danych 
-   // np sprawdzanie czy dany kod istanieje w bazie danych lub sprawdzanie kodu w zewnetrznym serwisie 
-   // Zmienna $status przechowuje status akcji 
-   //        0 - Błędny kod 
-   //        1 - Kod poprawny 
-   //        2 - Błędny klucz api 
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
     
-    echo $id_pay; echo '\n';
-    echo $code; echo '\n';
-    echo $id_user; echo '\n';
-    echo $coment; echo '\n';
-    echo $buyer; echo '\n';
+    echo $status; echo ' ';
+    echo $id_pay; echo ' ';
+    echo $code; echo ' ';
+    echo $id_user; echo ' ';
+    echo $buyer;  echo ' ';
    
    
    
