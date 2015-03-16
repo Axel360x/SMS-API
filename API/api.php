@@ -7,8 +7,19 @@
     $coment = urlencode($_GET['coment']);
     $buyer = urlencode($_GET['buyer']);
 	
-	$status=1;
 	
+	include ('function.php');
+	$db = new mysql;
+	$db->baza($bazadanych);
+	
+	if($id_pay){
+		$id_pay = $db->pobierz('id_pay');
+			$rezultat = $db->pytanie("select * FROM `sms_pay` WHERE `id_pay` = '".$id_pay."'");
+			if(mysql_num_rows($rezultat) == 0) { $status=0; } // bledne PayID
+	if($id_user){
+		$id_user = $db->pobierz('id_user');
+			$rezultat = $db->pytanie("select * FROM `konta` WHERE `id_user` = '".$id_user."'");
+			if(mysql_num_rows($rezultat) == 0) { $status=0; } // bledne UserID
    
 
 
@@ -33,7 +44,7 @@
 
     
     
-    echo $status; echo ' ';
+	//echo $status; echo ' ';
     echo $id_pay; echo ' ';
     echo $code; echo ' ';
     echo $id_user; echo ' ';
