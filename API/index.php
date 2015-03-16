@@ -9,6 +9,8 @@
 
     
    $zmienna = file_get_contents('http://localhost/SMS-API/API/api.php?idsms='.$id_pay.'&code='.$code.'&iduser='.$id_user.'&coment='.$coment.'&buyer='.$buyer); 
+   
+   //http://localhost/SMS-API/API/api.php?idsms=1001&code=srvawdsy&iduser=0001&coment=test&buyer=test
     
    if($zmienna){ 
        if($zmienna == '1'){ 

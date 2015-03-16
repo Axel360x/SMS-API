@@ -16,11 +16,11 @@
    //        2 - Błędny klucz api 
     
     
-    echo $id_pay; //Wyswietlenie stasusu który umożliwa sprawdzenie poprawnosci przesłanych danych 
-	echo $code;
-    echo $id_user;
-    echo $coment;
-    echo $buyer;
+    echo $id_pay; echo '\n';
+    echo $code; echo '\n';
+    echo $id_user; echo '\n';
+    echo $coment; echo '\n';
+    echo $buyer; echo '\n';
    
    
    
