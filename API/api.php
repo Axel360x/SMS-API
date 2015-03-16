@@ -31,17 +31,19 @@
     //zamyka polaczanie
     }
     
+    if (!$link = mysql_connect('mysql_host', 'mysql_user', 'mysql_password')) {
+    $status = 6;
+    exit;
+    }
+    
+    
     $inter == homepay?$zapytanie = "SELECT `id`,`cost` FROM `sms_`$inter WHERE `idsms`=$idsms";
     $inter == cashbill?$zapytanie = "SELECT `txt`,`numer`,`cost` FROM `sms_`$inter WHERE `idsms`=$idsms";
     $inter == platnosci-online?$zapytanie = "SELECT `cost` FROM `sms_`$inter WHERE `idsms`=$idsms"; //olac to teraz
     
-    
-    
     $idzapytania = mysql_query($zapytanie);
-    while ($wiersz = mysql_fetch_row($idzapytania)) 
-    {
-    echo $wiersz[0];
-    }
+    while ($wiersz = mysql_fetch_row($idzapytania)) {
+    echo $wiersz[0];}
     
   
    //        0 - Bledny kod 
