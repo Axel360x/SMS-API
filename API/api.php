@@ -30,14 +30,14 @@
 			if(mysql_num_rows($rezultat) != 1){
 				error(7);
 			}else{
-			list($id_pay, $sufix, $numer, $cost, $id_acc, $inter) = $db->tablica($rezultat);
+			list(, $sufix, $numer, $cost, $id_acc, $inter) = $db->tablica($rezultat);
 				// 0 - HomePay 1 - CashBill
 				switch ($inter) {
     				case 0:
-      				 unset($id_pay, $numer, $sufix);
+      				 unset($numer, $sufix);
      	   			 break;
 					case 1:
-      				 unset($id_pay, $id_acc); 
+      				 unset($id_acc); 
      			 	 break;
 				}}}
 	
