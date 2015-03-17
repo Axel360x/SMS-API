@@ -20,22 +20,17 @@
 			if ($insert == "HP") unset($numer, $sufix);
 			if ($insert == "CB") unset($id_acc);
 		
-		
 		}else{
-			
+			$status = 6; goto end; //blad PayID
 		}
-	
-	
-	
-	
+
 	if($id_user){
 		$id_user = $db->pobierz('id_user');
-			$rezultat = $db->pytanie("select * FROM `konta` WHERE `id_user` = '".$id_user."'");
-			if(mysql_num_rows($rezultat) == 0) { $status=16; } // bledne UserID
+			$rezultat = $db->pytanie("select `wallet1` FROM `konta` WHERE `id_user` = '".$id_user."'");
+			if(mysql_num_rows($rezultat) == 0) { list($wallet1) = $rezultat;} // bledne UserID
 	}else{
-		$id_user = $db->pobierz('id_user');
-			$rezultat = $db->pytanie("select * FROM `konta` WHERE `id_user` = '".$id_user."'");
-			if(mysql_num_rows($rezultat) == 0) { $status=16; } // bledne UserID
+			$status = 7; goto end; //blad UserID
+		}
    
 
 
@@ -59,7 +54,13 @@
 
 
     
-    
+	
+	
+	
+	
+	
+	
+	end:
 	//echo $status; echo ' ';
     echo $id_pay; echo ' ';
     echo $code; echo ' ';
