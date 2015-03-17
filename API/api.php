@@ -1,5 +1,6 @@
 <?php 
-    
+
+	if($_GET){   
    // Filtracja przesłanych danych 
     $code = $_GET['code'];
     $id_user = $_GET['iduser'];
@@ -43,4 +44,5 @@
 	
 	
 	//$status;
+}
 ?>
