@@ -1,7 +1,6 @@
 <?php 
     
    // Filtracja przesłanych danych 
-    $id_pay = $_GET['idsms'];
     $code = $_GET['code'];
     $id_user = $_GET['iduser'];
     $coment = urldecode($_GET['coment']);
@@ -26,10 +25,9 @@
 	
 	
 	
-	
-	if($id_pay) //done?
-			$rezultat = $db->pytanie("SELECT * FROM `sms_pay` WHERE `id_pay` = '".$id_pay."'");
-			if(mysql_num_rows($rezultat) == 1){
+	if(isset($_GET['idsms'])){ //done?
+			$rezultat = $db->pytanie("SELECT * FROM `sms_pay` WHERE `id_pay` = {$_GET['idsms']}");
+			if(mysql_num_rows($rezultat) != 1){
 			error(1);
 		}else{
 		list($id_pay, $sufix, $numer, $cost, $id_acc, $inter) = $db->tablica($rezultat);
@@ -41,8 +39,7 @@
 				 case 1:
       			  unset($id_pay, $id_acc); 
      			  break;
-				}
-		}
+				}}}
 	
 	
 	//$status;
