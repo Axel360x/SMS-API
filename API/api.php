@@ -15,12 +15,33 @@
 	if($id_pay){
 		$id_pay = $db->pobierz('id_pay');
 			$rezultat = $db->pytanie("select * FROM `sms_pay` WHERE `id_pay` = '".$id_pay."'");
-			if(mysql_num_rows($rezultat) == 0) { $status=15; } // bledne PayID
-	if($status != 15 && $id_user){
+			if(mysql_num_rows($rezultat) == 0){
+				mysql_query("SELECT `id_pay`, `surfix`, `numer`, `cost`, `id_acc`, 
+				`inter` FROM `sms_pay` WHERE `id_pay`=".$id_pay.") 
+				VALUES ('',
+						'".$surfix."',
+						'".$numer."',
+						'".$cost."',
+						'".$id_acc."',
+						'".$inter."'
+						)")
+			}
+		
+		
+		
+		
+		}else{
+			
+		}
+	
+	
+	
+	
+	if($id_user){
 		$id_user = $db->pobierz('id_user');
 			$rezultat = $db->pytanie("select * FROM `konta` WHERE `id_user` = '".$id_user."'");
 			if(mysql_num_rows($rezultat) == 0) { $status=16; } // bledne UserID
-	if($status != 16 && $status != 16){
+	}else{
 		$id_user = $db->pobierz('id_user');
 			$rezultat = $db->pytanie("select * FROM `konta` WHERE `id_user` = '".$id_user."'");
 			if(mysql_num_rows($rezultat) == 0) { $status=16; } // bledne UserID
