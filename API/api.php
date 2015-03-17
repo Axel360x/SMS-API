@@ -16,10 +16,9 @@
 		$id_pay = $db->pobierz('id_pay');
 			$rezultat = $db->pytanie("select * FROM `sms_pay` WHERE `id_pay` = '".$id_pay."'");
 			if(mysql_num_rows($rezultat) == 0){
-				mysql_query("SELECT `id_pay`, `surfix`, `numer`, `cost`, `id_acc`, 
-				`inter` FROM `sms_pay` WHERE `id_pay`=".$id_pay.") 
+				mysql_query("SELECT * FROM `sms_pay` WHERE `id_pay`=".$id_pay.") 
 				VALUES ('',
-						'".$surfix."',
+						'".$sufix."',
 						'".$numer."',
 						'".$cost."',
 						'".$id_acc."',
