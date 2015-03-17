@@ -13,14 +13,20 @@
 	$db->baza($bazadanych);
 	
 	if($id_pay){
-		$id_pay = $db->pytanie('id_pay');
 			$rezultat = $db->pytanie("select * FROM `sms_pay` WHERE `id_pay` = '".$id_pay."'");
-			if(mysql_num_rows($rezultat) == 1){list($temp, $sufix, $numer, $cost, $id_acc, $inter) = $rezultat;}else {error(6);}
+			if(mysql_num_rows($rezultat) == 1){error(6);
+		}else{
+			list($temp, $sufix, $numer, $cost, $id_acc, $inter) = ($pay = $db->tablica($rezultat));
+		list($id_pay, $sufix, $numer, $cost, $id_acc, $inter)=$pay;
+		unset($pay);
 		
-			if ($insert == "HP") unset($numer, $sufix);
-			if ($insert == "CB") unset($id_acc);
-		
-		}else {error(6);}
+			if ($insert == "HP") {unset($numer, $sufix);}
+			if ($insert == "CB") {unset($id_acc);}
+
+
+
+
+
 
 
 
@@ -56,7 +62,7 @@
 	
 	
 	
-	rozlacz();
+	
 	//$status;
    
    
