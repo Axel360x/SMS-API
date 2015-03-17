@@ -4,35 +4,33 @@
     $id_pay = clear($_GET['idsms']);
     $code = clear($_GET['code']);
     $id_user = clear($_GET['iduser']);
-    $coment = urlencode($_GET['coment']);
-    $buyer = urlencode($_GET['buyer']);
+    $coment = urldecode($_GET['coment']);
+    $buyer = urldecode($_GET['buyer']);
 	
-	
+	session_start ();
 	include ('function.php');
 	$db = new mysql;
 	$db->baza($bazadanych);
 	
 	if($id_pay){
-		$id_pay = $db->pobierz('id_pay');
+		$id_pay = $db->pytanie('id_pay');
 			$rezultat = $db->pytanie("select * FROM `sms_pay` WHERE `id_pay` = '".$id_pay."'");
-			if(mysql_num_rows($rezultat) == 0){ list(,$sufix, $numer, $cost, $id_acc, $inter) = $rezultat;}
+			if(mysql_num_rows($rezultat) == 1){list($temp, $sufix, $numer, $cost, $id_acc, $inter) = $rezultat;}else {error(6);}
 		
 			if ($insert == "HP") unset($numer, $sufix);
 			if ($insert == "CB") unset($id_acc);
 		
-		}else{
-			$status = 6; goto end; //blad PayID
-		}
+		}else {error(6);}
 
-	if($id_user){
-		$id_user = $db->pobierz('id_user');
-			$rezultat = $db->pytanie("select `wallet1` FROM `konta` WHERE `id_user` = '".$id_user."'");
-			if(mysql_num_rows($rezultat) == 0) { list($wallet1) = $rezultat;} // bledne UserID
-	}else{
-			$status = 7; goto end; //blad UserID
-		}
+
+
+
+//	 if($id_user){
+//		$id_user = $db->pobierz('id_user');
+//			$rezultat = $db->pytanie("select `wallet1` FROM `konta` WHERE `id_user` = '".$id_user."'");
+//			if(mysql_num_rows($rezultat) == 1) { list($wallet1) = $rezultat;} // bledne UserID
+//	}else {error(7);} //blad UserID
    
-
 
 
 
@@ -58,14 +56,8 @@
 	
 	
 	
-	
-	
-	end:
-	//echo $status; echo ' ';
-    echo $id_pay; echo ' ';
-    echo $code; echo ' ';
-    echo $id_user; echo ' ';
-    echo $buyer;  echo ' ';
+	rozlacz();
+	//$status;
    
    
    

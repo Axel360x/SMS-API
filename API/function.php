@@ -19,16 +19,13 @@ class mysql{
 	function pytanie($pytanie){
 		return $pytanie_wynik = mysql_query($pytanie);
 	}
-	function num_rows($pytanie){
+	function num_rows($pytanie){ //urzywane //liczy ile rekordow wystapilo
 		$wynik = mysql_num_rows($pytanie);
 		return $wynik;
 	}
 	function tablica($pytanie){
 		$wynik = mysql_fetch_array($pytanie);
 		return $wynik;
-	}
-	function pobierz($pole) {
-		return $pole = htmlspecialchars(mysql_real_escape_string (trim($_POST[''.$pole.''])));
 	}
 	function rozlacz() {
 		mysql_close();
@@ -63,8 +60,8 @@ function wyswietl_sms($id){
 return $cena = $pytanie['wartoscsms'];
 }
 
-function error($tresc){
-	echo "Błąd krytyczny".$tresc ;
+function error($tresc){ //blad
+	echo $tresc ;
 	exit;
 }
 ?>
