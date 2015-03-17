@@ -2,8 +2,6 @@
 
 	if($_GET){   
    // Filtracja przesłanych danych 
-    $code = $_GET['code'];
-    $id_user = $_GET['iduser'];
     $coment = urldecode($_GET['coment']);
     $buyer = urldecode($_GET['buyer']);
 	
@@ -11,7 +9,9 @@
 	$db = new mysql;
 	$db->baza($bazadanych);
 	
-	
+	if(isset($_GET['iduser']) && isset(urldecode($_GET['controle'])) ){
+		
+																	  }
 	
 	
 	
@@ -36,11 +36,20 @@
 				switch ($inter) {
     				case 0:
       				 unset($numer, $sufix);
+						if(isset($_GET['code'])){
+						 /*KOD MA WYKONYWAC PO DOSTARCZENIU CODE*/
+												}
+						
      	   			 break;
 					case 1:
       				 unset($id_acc); 
+						if(isset($_GET['code'])){
+						 /*KOD MA WYKONYWAC PO DOSTARCZENIU CODE*/
+												}
+						
      			 	 break;
-				}}}
+								}
+				}			}
 	
 	
 	//$status;

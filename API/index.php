@@ -6,11 +6,12 @@
     $id_user = '1';
     $coment = urlencode('test');
     $buyer = urlencode('test');
+	$sumakontrolna = urlencode('nick');
 
     
-   $check = file_get_contents('http://localhost/SMS-API/API/api.php?idsms='.$id_pay.'&code='.$code.'&iduser='.$id_user.'&coment='.$coment.'&buyer='.$buyer); 
+   $check = file_get_contents('http://localhost/SMS-API/API/api.php?idsms='.$id_pay.'&code='.$code.'&iduser='.$id_user.'&coment='.$coment.'&buyer='.$buyer.'&controle='.$sumakontrolna); 
    
-   //http://localhost/SMS-API/API/api.php?idsms=1001&code=srvawdsy&iduser=0001&coment=test&buyer=test
+   //http://localhost/SMS-API/API/api.php?idsms=1&code=srvawdsy&iduser=1&coment=test&buyer=test&controle=test
 
   
    
