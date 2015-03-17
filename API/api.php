@@ -15,9 +15,10 @@
 	if($id_pay){
 		$id_pay = $db->pobierz('id_pay');
 			$rezultat = $db->pytanie("select * FROM `sms_pay` WHERE `id_pay` = '".$id_pay."'");
-			if(mysql_num_rows($rezultat) == 0){ list(,$sufix, $numer, $cost, $id_acc, $cost, $inter) = $rezultat;}
+			if(mysql_num_rows($rezultat) == 0){ list(,$sufix, $numer, $cost, $id_acc, $inter) = $rezultat;}
 		
-		
+			if ($insert == "HP") unset($numer, $sufix);
+			if ($insert == "CB") unset($id_acc);
 		
 		
 		}else{
