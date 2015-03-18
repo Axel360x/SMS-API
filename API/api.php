@@ -1,5 +1,5 @@
 <?php 
-
+//fuck her right in the pussy
 	if($_GET){   
    // Filtracja przesłanych danych 
     $coment = urldecode($_GET['coment']);
