@@ -2,12 +2,12 @@
 include ('config.php');
 class mysql{
 	function sprawdz_polaczenie(){
-		include("config.php");
+		//include("config.php"); -NOPE
 		$lol= @mysql_connect($host,$uzytkownik,$haslo);
 		return $mysql_sprawdz = true;
 	}
 	function polacz(){
-		include("config.php");
+		//include("config.php"); -NOPE
 		@mysql_connect($host,$uzytkownik,$haslo);
 		return $mysql_sprawdz = true;
 	}
@@ -32,19 +32,16 @@ class mysql{
 	}
 }
 function historiakupna($id_user,$code,$coment,$buyer,$cost) {
-$data = date('d-m-Y H:i:s');
-$pytanko = mysql_query("INSERT INTO `sms_historia`(`id`,
- `buyer`,
- `id_user`,
- `cost`) VALUES ('',
- '$buyer',
- '$id_user',
- '$cost')") or die ("nie można dodac wpisu");
-return $kupione = true;
+	$data = date('d-m-Y H:i:s');
+	$pytanko = mysql_query("INSERT INTO `sms_historia`(`id`,
+ 	`buyer`,
+ 	`id_user`,
+ 	`cost`) VALUES ('',
+ 	'$buyer',
+ 	'$id_user',
+ 	'$cost')") or die ("nie można dodac wpisu");
+	return $kupione = true;
 }
-
-
-
 
 function aktualizacjakasy($cost){
 	$update_wallet1 = mysql_fetch_array(mysql_query("SELECT `wallet1` FROM `konta` WHERE `id` = $id_user"));
@@ -57,7 +54,7 @@ function aktualizacjakasy($cost){
 
 function wyswietl_sms($id){
 	$pytanie = mysql_fetch_array(mysql_query("SELECT `wartoscsms` FROM `sklep_sms` WHERE `id` = '".$id."'"));
-return $cena = $pytanie['wartoscsms'];
+	return $cena = $pytanie['wartoscsms'];
 }
 
 function error($tresc){ //blad
