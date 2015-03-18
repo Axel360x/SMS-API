@@ -1,19 +1,21 @@
 <?php 
+    
     //Przykladowe dane wyslane przez api 
     $id_pay = '1';
-    $code = 'srvawsy';
+    $code = 'srv5wsy';
     $id_user = '1';
+    $coment = urlencode('test');
     $buyer = urlencode('test');
-	$sumakontrolna = 'c4ca4238a0b923820dcc509a6f75849b';
+	$sumakontrolna = urlencode('nick');
 
     
- //  $handle = file_get_contents('http://localhost/SMS-API/API/api.php?idsms='.$id_pay.'&code='.$code.'&iduser='.$id_user.'&buyer='.$buyer.'&controle='.$sumakontrolna);
+   $check = file_get_contents('http://localhost/SMS-API/API/api.php?idsms='.$id_pay.'&code='.$code.'&iduser='.$id_user.'&coment='.$coment.'&buyer='.$buyer.'&controle='.$sumakontrolna); 
    
-   $handle=fopen('http://localhost/SMS-API/API/api.php?idsms='.$id_pay.'&code='.$code.'&iduser='.$id_user.'&buyer='.$buyer.'&controle='.$sumakontrolna,'r');
-							$check=fgets($handle,8);
-							fclose($handle);
+   echo $check; 
    
-  echo 'http://localhost/SMS-API/API/api.php?idsms='.$id_pay.'&code='.$code.'&iduser='.$id_user.'&buyer='.$buyer.'&controle='.$sumakontrolna; echo '&nbsp';
+   //http://localhost/SMS-API/API/api.php?idsms=1&code=srvawdsy&iduser=1&coment=test&buyer=test&controle=test
+
+  
    
  if($check){ 
        if($check == '1'){ 
