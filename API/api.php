@@ -2,7 +2,6 @@
 //fuck her right in the pussy
 	if($_GET){   
    // Filtracja przesłanych danych 
-	
 	include ('function.php');
 	$db = new mysql;
 	$db->baza($bazadanych);
@@ -34,14 +33,14 @@
 						 	$handle=fopen("http://homepay.pl/API/check_code.php?usr_id=".$config_homepay_usr_id."&acc_id=".$acc_id."&code=".$code,'r');
 							$check=fgets($handle,8);
 							fclose($handle);
-										
+										$check=1; //debug
 										switch($check){
 											case 0:
 												error(6); //Nieprawidlowy kod
 												break;
 											case 1:
 												//TO DO //Prawidlowy kod
-												historiasms($_GET['iduser'],$_GET['code'],$cost,$_GET['buyer']);
+												historiasms($_GET['iduser'],$code,$cost,$_GET['buyer']);
 												aktualizacjawallet1($_GET['iduser'],$cost);
 												error(1); //powodzenie platnosci
 												break;

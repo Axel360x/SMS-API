@@ -33,11 +33,10 @@ class mysql{
 }
 function historiasms($id_user,$code,$cost,$buyer) {
 $data = date('d-m-Y H:i:s');
-$pytanko = mysql_query("INSERT INTO `sms_historia`(`id`,
- `id_user`,`code`,`buyer`,`cost`,`data`) VALUES ('',
- '$id_user','$code','$buyer',
- '$cost')") or die ("nie można dodac wpisu");
-return $kupione = true;
+$pytanko = mysql_query("INSERT INTO `sms_historia`(
+ `id_user`,`code`,`buyer`,`cost`,`data`) VALUES (
+ `$id_user`,`$code`,`$buyer`,
+ `$cost`,`$data`)") or die ("nie można dodac wpisu");
 }
 
 
