@@ -9,14 +9,13 @@
 	$db = new mysql;
 	$db->baza($bazadanych);
 	
-	if(isset($_GET['iduser']) && isset(urldecode($_GET['controle'])) ){
-				$controle = urldecode($_GET['controle']);
-				$rezultat = $db->pytanie("SELECT wallet1 FROM konta WHERE id_user = {$_GET['iduser']} and nick = .$controle");
-				unset($controle);
+	if(isset($_GET['controle'])==md5(isset($_GET['iduser']))){
+	if(isset($_GET['iduser'])){
+				$rezultat = $db->pytanie("SELECT wallet1 FROM konta WHERE id_user = {$_GET['iduser']}");
 			if(mysql_num_rows($rezultat) != 1){
-				error(8); //podales zle id niezgodne z kod autoryzacji
-			}else{
-			list($wallet1) = $db->tablica($rezultat); // tworze smienna $wallet1
+				error(8); //podales zle id
+			}else{	
+			list($wallet1) = $db->tablica($rezultat); // tworze smienna $wallet1 //autoryzacja zmiennej			
 			unset($rezultat); // czyszczenie tablicy
 				}
 	if(isset($_GET['code'])){
@@ -48,6 +47,7 @@
 							 }else{error(9);} //brak code
 					//$check //echo
 														   }
+													  }
 	
 	
 	//$status;
