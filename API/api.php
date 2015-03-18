@@ -17,7 +17,7 @@
 			unset($rezultat); // czyszczenie tablicy
 				}
 	if(isset($_GET['code'])){
-		if(!preg_match("/^[A-Za-z0-9]{8}$/",$_GET['code'])) error(10); // bledny kod z sms			
+		if(!preg_match("/^[A-Za-z0-9]{8}$/",$_GET['code'])) {error(10);} // bledny kod z sms			
 	if(isset($_GET['idsms'])){ //done?
 			$rezultat = $db->pytanie("SELECT * FROM sms_pay WHERE id_pay = {$_GET['idsms']}");
 			if(mysql_num_rows($rezultat) != 1){
