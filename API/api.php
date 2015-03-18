@@ -2,8 +2,6 @@
 //fuck her right in the pussy
 	if($_GET){   
    // Filtracja przesłanych danych 
-    $coment = urldecode($_GET['coment']);
-    $buyer = urldecode($_GET['buyer']);
 	
 	include ('function.php');
 	$db = new mysql;
@@ -25,17 +23,32 @@
 			if(mysql_num_rows($rezultat) != 1){
 				error(7); //brak takiego id_pay
 			}else{
-			list(, $sufix, $numer, $cost, $acc_id, $inter) = $db->tablica($rezultat);
+			list(, $acc_id, $sufix, $numer, $cost, $inter) = $db->tablica($rezultat);
 			unset($rezultat); // czyszczenie tablicy
 				// 0 - HomePay 1 - CashBill
 				switch ($inter) {
     				case 0:
       				 unset($numer, $sufix);
 						 /*KOD MA WYKONYWAC PO DOSTARCZENIU CODE*/
+						 	$code=$_GET['code'];
 						 	$handle=fopen("http://homepay.pl/API/check_code.php?usr_id=".$config_homepay_usr_id."&acc_id=".$acc_id."&code=".$code,'r');
 							$check=fgets($handle,8);
 							fclose($handle);
-												
+										
+										switch($check){
+											case 0:
+												error(6); //Nieprawidlowy kod
+												break;
+											case 1:
+												//TO DO //Prawidlowy kod
+												historiasms($_GET['iduser'],$_GET['code'],$cost,$_GET['buyer']);
+												aktualizacjawallet1($_GET['iduser'],$cost);
+												error(1); //powodzenie platnosci
+												break;
+											default:
+												error(9); //niepowodzenie platnosci
+												break;
+										}												
 						
      	   			 break;
 					case 1:
@@ -45,11 +58,7 @@
 								}
 				}			}
 							 }else{error(9);} //brak code
-					//$check //echo
 														   }
 													  }
-	
-	
-	//$status;
 }
 ?>

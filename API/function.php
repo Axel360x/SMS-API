@@ -31,14 +31,11 @@ class mysql{
 		mysql_close();
 	}
 }
-function historiakupna($id_user,$code,$coment,$buyer,$cost) {
+function historiasms($id_user,$code,$cost,$buyer) {
 $data = date('d-m-Y H:i:s');
 $pytanko = mysql_query("INSERT INTO `sms_historia`(`id`,
- `buyer`,
- `id_user`,
- `cost`) VALUES ('',
- '$buyer',
- '$id_user',
+ `id_user`,`code`,`buyer`,`cost`,`data`) VALUES ('',
+ '$id_user','$code','$buyer',
  '$cost')") or die ("nie można dodac wpisu");
 return $kupione = true;
 }
@@ -46,7 +43,7 @@ return $kupione = true;
 
 
 
-function aktualizacjakasy($cost){
+function aktualizacjawallet1($id_user,$cost){
 	$update_wallet1 = mysql_fetch_array(mysql_query("SELECT `wallet1` FROM `konta` WHERE `id` = $id_user"));
 	$update_wallet1 = $update_wallet1['wallet1']/100;
 	$ilosc = $update_wallet1 + $cost;
@@ -60,7 +57,7 @@ function wyswietl_sms($id){
 return $cena = $pytanie['wartoscsms'];
 }
 
-function error($tresc){ //blad
+function error($tresc){ //blad lub wyswietlanie
 	echo $tresc ;
 	exit;
 }
