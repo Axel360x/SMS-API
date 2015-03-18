@@ -35,8 +35,8 @@ function historiasms($id_user,$code,$cost,$buyer) {
 $data = date('d-m-Y H:i:s');
 $pytanko = mysql_query("INSERT INTO `sms_historia`(
  `id_user`,`code`,`buyer`,`cost`,`data`) VALUES (
- `$id_user`,`$code`,`$buyer`,
- `$cost`,`$data`)") or die ("nie można dodac wpisu");
+ $id_user, $code, $buyer,
+ $cost, $data)") or die ("nie można dodac wpisu");
 }
 
 
