@@ -2,12 +2,12 @@
 include ('config.php');
 class mysql{
 	function sprawdz_polaczenie(){
-		include("config.php");
+		//include("config.php");
 		$lol= @mysql_connect($host,$uzytkownik,$haslo);
 		return $mysql_sprawdz = true;
 	}
 	function polacz(){
-		include("config.php");
+		//include("config.php");
 		@mysql_connect($host,$uzytkownik,$haslo);
 		return $mysql_sprawdz = true;
 	}
