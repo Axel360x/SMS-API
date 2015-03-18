@@ -32,18 +32,19 @@ class mysql{
 	}
 }
 function historiasms($id_user,$code,$cost,$buyer) {
-$data = date('d-m-Y H:i:s');
-$pytanko = mysql_query("INSERT INTO `sms_historia`(
- `id_user`,`code`,`buyer`,`cost`,`data`) VALUES (
- $id_user, $code, $buyer,
- $cost, $data)") or die ("nie można dodac wpisu");
+$pytanko = mysql_query("INSERT INTO sms_historia (
+ id_user, code, buyer, cost) VALUES (
+ $id_user, '$code', '$buyer',
+ $cost)") or die ("nie można dodac wpisu");
+ //INSERT INTO `sms_historia`(`id_user`, `code`, `buyer`, `cost`) VALUES (1,fwafwsge,MARVIN_PL,1)
+ return $historiasms = true;
 }
 
 
 
 
 function aktualizacjawallet1($id_user,$cost){
-	$update_wallet1 = mysql_fetch_array(mysql_query("SELECT `wallet1` FROM `konta` WHERE `id` = $id_user"));
+	$update_wallet1 = mysql_fetch_array(mysql_query("SELECT `wallet1` FROM konta WHERE `id` = $id_user"));
 	$update_wallet1 = $update_wallet1['wallet1']/100;
 	$ilosc = $update_wallet1 + $cost;
 	$ilosc = $ilosc*100;
