@@ -4,7 +4,7 @@
     $id_pay = '1';
     $code = "asd123f4";
     $id_user = '1';
-    $buyer = urlencode('test');
+    $buyer = urlencode('MARVIN');
 	$sumakontrolna = urlencode('nick');
 
     
@@ -13,7 +13,7 @@
    echo $check; echo '&nbsp';
 
   
-   
+   /*
  if($check){ 
        if($check == '1'){ 
            echo 'Kod poprawny'; 
@@ -41,6 +41,6 @@
    }else{ 
        echo 'Błąd połączenia z operatorem'; 
    } 
-	
+	*/
 	
 ?>
