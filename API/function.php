@@ -44,7 +44,8 @@ $pytanko = mysql_query("INSERT INTO sms_historia (
 
 
 function aktualizacjawallet1($id_user,$cost){
-	$wallet1 = mysql_query("SELECT 'wallet1' FROM konta WHERE 'id_user' = '$id_user'");
+	$wallet1 = mysql_query("SELECT `wallet1` FROM `konta` WHERE `id_user` = '$id_user'"); // tu cos zjebane...
+	//$wallet1 = 1; //debug
 	$wallet1 += $cost; //0+1=12?? WTF!!!
 	mysql_query("UPDATE konta SET `wallet1` = '$wallet1' WHERE `id_user` = '$id_user'");
 	return $aktualizacja = true;
