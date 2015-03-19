@@ -44,11 +44,9 @@ $pytanko = mysql_query("INSERT INTO sms_historia (
 
 
 function aktualizacjawallet1($id_user,$cost){
-	$update_wallet1 = mysql_fetch_array(mysql_query("SELECT wallet1 FROM konta WHERE 'id' = '$id_user'"));
-	$update_wallet1 = $update_wallet1['wallet1']/100;
-	$ilosc = $update_wallet1 + $cost;
-	$ilosc = $ilosc*100;
-	$update_wallet1 = mysql_query("UPDATE `konta` SET `wallet1` = '$ilosc' WHERE `id` = $id_user");;
+	$wallet1 = mysql_query("SELECT wallet1 FROM konta WHERE 'id_user' = '$id_user'");
+	$wallet1 += $cost;
+	mysql_query("UPDATE konta SET `wallet1` = '$wallet1' WHERE `id_user` = '$id_user'");
 	return $aktualizacja = true;
 }
 

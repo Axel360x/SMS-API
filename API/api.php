@@ -33,7 +33,7 @@
 						 	$handle=fopen("http://homepay.pl/API/check_code.php?usr_id=".$config_homepay_usr_id."&acc_id=".$acc_id."&code=".$code,'r');
 							$check=fgets($handle,8);
 							fclose($handle);
-										//$check=1; //debug
+										$check=1; //debug
 										switch($check){
 											case 0:
 												error(6); //Nieprawidlowy kod

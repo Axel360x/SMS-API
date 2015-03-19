@@ -11,8 +11,8 @@
    $check = file_get_contents('http://localhost/SMS-API/API/api.php?idsms='.$id_pay.'&code='.$code.'&iduser='.$id_user.'&buyer='.$buyer.'&controle='.$sumakontrolna); 
    
    echo $check; echo '&nbsp';
-
-  
+   
+ 
    /*
  if($check){ 
        if($check == '1'){ 
