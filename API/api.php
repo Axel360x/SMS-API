@@ -6,17 +6,16 @@
 		$db = new SQL();
 		$db->SetDatabase($db_sms);
 		
-		if(isset($_GET['idsms']) && isset($_GET['code']) && isset($_GET['iduser']) && isset($_GET['buyer']) && isset($_GET['controle'])){
+		if(isset($_GET['idsms']) && isset($_GET['code']) && isset($_GET['iduser']) && isset($_GET['buyer'])){
 			$idsms = $_GET['idsms'];
 			$code = $_GET['code'];
 			$iduser = $_GET['iduser'];
-			$buyer = $_GET['buyer'];
-			$controle = $_GET['controle'];
+			$buyer = urlendecode($_GET['buyer']);
 			$rezultat = $db->Query("SELECT 'wallet1' FROM 'konta' WHERE 'id_user'=$iduser");
 			
 			if(GetNumberOfRows($rezultat) == 0) die("Niepoprawny numer ID!"); //podales zle id
 			
-			list($wallet1) = $db->GetTable($rezultat); // tworze smienna $wallet1 //autoryzacja zmiennej //!!PO CO TO?!!//	
+			//list($wallet1) = $db->GetTable($rezultat); // tworze smienna $wallet1 //autoryzacja zmiennej //!!PO CO TO?!!//	//BYL CEL!!//
 			unset($rezultat); // czyszczenie tablicy
 			
 			if(!preg_match("/^[A-Za-z0-9]{8}$/",$code)) die("Błędny kod SMS!"); // bledny kod z sms
