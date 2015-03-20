@@ -1,10 +1,10 @@
 <?php
 $id_user = 1;
-$id_pay = 2;
-$tesc = 'AG.MINE';
-$numer = '72480':
-$netto = 2;
-$brutto=netto*1.23;
+$id_pay = 1;
+$tesc = 'HPAY.TAB';
+$numer = '7155';
+$netto = 1;
+$brutto=$netto*1.23;
 
 if($_POST&&$_POST['check_code'])
     {
@@ -35,8 +35,6 @@ $check = file_get_contents('http://localhost/SMS-API/API/api.php?idsms='.$id_pay
 <html><body>
 <br/><br/>
 <?php
-
-echo "Wyslij SMS o tresci ".$v['tekst']." na numer ".$v['numer']." za ".$v['netto']."zl + VAT ( ".$v['brutto']."zl )<br/>\n";
 echo "Wyslij SMS o tresci ".$tesc." na numer ".$numer." za ".$netto." zl + VAT ( ".$brutto." zl )<br/>\n";
 ?>
 <br/><br/>
