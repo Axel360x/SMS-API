@@ -132,8 +132,8 @@ catch(PDOException $e)
 try {
     // sql to create table
     $sql = "INSERT INTO sms_pay (sufix, numer, cost, inter) VALUES
-	('MINE', 72480, 2, '1'),
-	('MINE', 73480, 3, '1');";
+	('MINE', 72480, 2, 1),
+	('MINE', 73480, 3, 1);";
 	//http://goo.gl/4iFUEd //pisz na marvin1994pl@gmail.com aby uzyskac dostep
 	//CASHBILL
     // use exec() because no results are returned
