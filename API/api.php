@@ -53,7 +53,28 @@
 					break;
 				case 1:
 		      		unset($id_acc); 
-							 /*KOD MA WYKONYWAC PO DOSTARCZENIU CODE*/						
+							 /*KOD MA WYKONYWAC PO DOSTARCZENIU CODE*/
+					$handle = fopen("http://sms.cashbill.pl/backcode_check_fulloutput.php?id=".$id."&code=ag.".$sufix.":".$numer."&check=".$code."", 'r');
+					$status = fgets($handle, 8);
+					$czas_zycia = fgets($handle, 24);
+					$foo = fgets($handle, 96);
+					$bramka = fgets($handle, 96);
+					fclose($handle);
+						unset($czas_zycia, $code); 			
+					switch($check){
+						case 0:
+							die("Niepoprawny kod!"); //Nieprawidlowy kod
+							break;
+						case 1:
+														//TO DO //Prawidlowy kod
+							$db->SmsHistory($iduser, $foo, $cost, $buyer);
+							$db->Wallet1Update($iduser,$cost);
+							echo "SUCCESS!"; //powodzenie platnosci
+							break;
+						default:
+							die("Niepowodzenie płatności"); //niepowodzenie platnosci
+							break;
+						}
 		     		break;
 			}
 					
