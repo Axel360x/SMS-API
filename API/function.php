@@ -5,16 +5,16 @@ class SQL{
 	function __construct()
 	{
 		include ("config.php");
-		$dbHandle = mysql_connect($db_host, $db_user, $db_password);
+		$this->dbHandle = mysql_connect($db_host, $db_user, $db_password);
 	}
 	
 	function SetDatabase($database){
-		mysql_select_db($database, $dbHandle);
+		mysql_select_db($database, $this->dbHandle);
 		return true;
 	}
 	
 	function Query($sql){
-		return mysql_query($sql, $dbHandle);
+		return mysql_query($sql, $this->dbHandle);
 	}
 	//Depracted?
 	function GetNumberOfRows($result){
