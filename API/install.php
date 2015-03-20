@@ -51,7 +51,8 @@ try {
     firstname VARCHAR(30) NOT NULL,
     lastname VARCHAR(30),
 	password VARCHAR(32) NOT NULL,
-	reg_date TIMESTAMP
+	reg_date TIMESTAMP,
+	wallet1 DECIMAL(3,2) NOT NULL DEFAULT '0'
     )";	
 	
     // use exec() because no results are returned
