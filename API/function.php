@@ -1,8 +1,6 @@
 <?php
-//Edit by https://github.com/Axel360x/ Rafał
-include ("config.php"); //niepowinno byc udostepnione czy cos?
 class SQL{
-	
+	include ("config.php");
 	private $dbHandle = null;
 	
 	function __construct()
