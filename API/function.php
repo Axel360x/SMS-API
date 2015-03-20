@@ -26,13 +26,13 @@ class SQL{
 	}
 	
 	function Wallet1Update($id_user,$cost){
-		$wallet1 = $this->Query("SELECT `wallet1` FROM `konta` WHERE `id_user`=$id_user");
+		$wallet1 = $this->Query("SELECT wallet1 FROM `konta` WHERE id_user=$id_user");
 		$wallet1 += $cost;
-		$this->Query("UPDATE 'konta' SET `wallet1`=$wallet1 WHERE `id_user`=$id_user");
+		$this->Query("UPDATE konta SET `wallet1`=$wallet1 WHERE id_user=$id_user");
 	}
 	
 	function SmsHistory($id_user,$code,$cost,$buyer) {
-		$this->Query("INSERT INTO 'sms_historia' ('id_user', 'code', 'buyer', 'cost') VALUES ($id_user, '$code', '$buyer', $cost)");
+		$this->Query("INSERT INTO 'sms_historia' ('id_user', code, buyer, cost) VALUES ($id_user, '$code', '$buyer', $cost)");
 	}
 	
 	function __destruct() {
