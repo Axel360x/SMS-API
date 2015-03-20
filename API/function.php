@@ -1,61 +1,44 @@
 <?php
-include ('config.php');
-class mysql{
+//Edit by https://github.com/Axel360x/ Rafał
+include ("config.php");
+class SQL{
 	
-	function __constructor()
+	private $dbHandle = null;
+	
+	function __construct()
 	{
-		mysql_connect($host,$uzytkownik,$haslo);
-		return $mysql_sprawdz = true;	
+		$dbHandle = mysql_connect($db_host, $db_user, $db_password);
 	}
-
-	function baza($bazadanych){
-		mysql_select_db($bazadanych);
-		return $baza_sprawdz = true;
+	
+	function SetDatabase($database){
+		mysql_select_db($database, $dbHandle);
+		return true;
 	}
-	function pytanie($pytanie){
-		return $pytanie_wynik = mysql_query($pytanie);
+	
+	function Query($sql){
+		return mysql_query($sql, $dbHandle);
 	}
-	function num_rows($pytanie){ //urzywane //liczy ile rekordow wystapilo
-		$wynik = mysql_num_rows($pytanie);
-		return $wynik;
+	//Depracted?
+	function GetNumberOfRows($result){
+		return mysql_num_rows($result);
 	}
-	function tablica($pytanie){
-		$wynik = mysql_fetch_array($pytanie);
-		return $wynik;
+	
+	function GetTable($result){
+		return mysql_fetch_array($result);
 	}
-	function __destructor() {
+	
+	function Wallet1Update($id_user,$cost){
+		$wallet1 = $this->Query("SELECT `wallet1` FROM `konta` WHERE `id_user`=$id_user");
+		$wallet1 += $cost;
+		$this->Query("UPDATE 'konta' SET `wallet1`=$wallet1 WHERE `id_user`=$id_user");
+	}
+	
+	function SmsHistory($id_user,$code,$cost,$buyer) {
+		$this->Query("INSERT INTO 'sms_historia' ('id_user', 'code', 'buyer', 'cost') VALUES ($id_user, '$code', '$buyer', $cost)");
+	}
+	
+	function __destruct() {
 		mysql_close();
 	}
-}
-function historiasms($id_user,$code,$cost,$buyer) {
-$pytanko = mysql_query("INSERT INTO sms_historia (
- id_user, code, buyer, cost) VALUES (
- '$id_user', '$code', '$buyer',
- '$cost')") or die ("nie można dodac wpisu");
- //INSERT INTO `sms_historia`(`id_user`, `code`, `buyer`, `cost`) VALUES (1,fwafwsge,MARVIN_PL,1)
- return $historiasms = true;
-}
-
-
-
-
-function aktualizacjawallet1($id_user,$cost){
-	$sql = "SELECT 'wallet1' FROM 'konta' WHERE id_user=$id_user";
-	$wallet1 = mysql_query($sql); // tu cos zjebane...
-	echo "<br>$wallet1<br>$cost";
-	//$wallet1 = 1; //debug
-	$wallet1 += $cost; //0+1=12?? WTF!!!
-	mysql_query("UPDATE konta SET `wallet1` = '$wallet1' WHERE `id_user` = '$id_user'");
-	return $aktualizacja = true;
-}
-
-function wyswietl_sms($id){
-	$pytanie = mysql_fetch_array(mysql_query("SELECT `wartoscsms` FROM `sklep_sms` WHERE `id` = '".$id."'"));
-return $cena = $pytanie['wartoscsms'];
-}
-
-function error($tresc){ //blad lub wyswietlanie
-	echo $tresc ;
-	exit;
 }
 ?>
