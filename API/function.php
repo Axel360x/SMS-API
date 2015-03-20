@@ -1,10 +1,10 @@
 <?php
 class SQL{
-	include ("config.php");
 	private $dbHandle = null;
 	
 	function __construct()
 	{
+		include ("config.php");
 		$dbHandle = mysql_connect($db_host, $db_user, $db_password);
 	}
 	
