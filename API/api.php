@@ -37,13 +37,12 @@
 						//$check=1; //debug
 					switch($check){
 						case 0:
-							die("Niepoprawny kod!"); //Nieprawidlowy kod
+							die("0"); //Nieprawidlowy kod
 							break;
 						case 1:
-														//TO DO //Prawidlowy kod
 							$db->SmsHistory($iduser, $code, $cost, $buyer);
 							$db->Wallet1Update($iduser,$cost);
-							echo "SUCCESS!"; //powodzenie platnosci
+							echo "1"; //powodzenie platnosci
 							break;
 						default:
 							die("Niepowodzenie płatności"); //niepowodzenie platnosci
@@ -62,13 +61,12 @@
 						unset($czas_zycia, $code); 			
 					switch($check){
 						case 0:
-							die("Niepoprawny kod!"); //Nieprawidlowy kod
+							die("0"); //Nieprawidlowy kod
 							break;
 						case 1:
-														//TO DO //Prawidlowy kod
 							$db->SmsHistory($iduser, $foo, $cost, $buyer);
 							$db->Wallet1Update($iduser,$cost);
-							echo "SUCCESS!"; //powodzenie platnosci
+							echo "1"; //powodzenie platnosci
 							break;
 						default:
 							die("Niepowodzenie płatności"); //niepowodzenie platnosci
