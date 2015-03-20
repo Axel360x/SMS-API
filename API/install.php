@@ -19,6 +19,7 @@ catch(PDOException $e)
     echo $sql . "<br>" . $e->getMessage();
     }
 
+$conn = null;
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
