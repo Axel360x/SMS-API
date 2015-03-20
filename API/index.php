@@ -13,7 +13,7 @@ if($_POST&&$_POST['check_code'])
     if(!preg_match("/^[A-Za-z0-9]{8}$/",$code)) echo "Zly format kodu - 8 znakow.";
     else
 	{
-$check = file_get_contents('http://localhost/SMS-API/API/api.php?idsms='.$id_pay.'&code='.$code.'&iduser='.$id_user.'&buyer='.$buyer.'&controle='.$sumakontrolna); 
+$check = file_get_contents('http://localhost/SMS-API/API/api.php?idsms='.$id_pay.'&code='.$code.'&iduser='.$id_user.'&buyer='.$buyer); 
 
 	if($check=="1")
 	    {
