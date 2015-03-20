@@ -1,4 +1,5 @@
 <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -151,7 +152,7 @@ try {
     // sql to insert table	
     $sql = "INSERT INTO konta (login, email, firstname, password) VALUES
 	('MARVIN', 'marvin1994pl@gmail.pl', 'Marcin', '202cb962ac59075b964b07152d234b70'),
-	('Alex', 'test@test.pl', 'Rafał', '202cb962ac59075b964b07152d234b70');";
+	('Alex', 'test@test.pl', 'Rafal', '202cb962ac59075b964b07152d234b70');";
     // use exec() because no results are returned
     $conn->exec($sql);
 	
