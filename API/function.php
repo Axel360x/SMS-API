@@ -1,18 +1,14 @@
 <?php
 include ('config.php');
 class mysql{
-	function sprawdz_polaczenie(){
-		include("config.php");
-		$lol= @mysql_connect($host,$uzytkownik,$haslo);
-		return $mysql_sprawdz = true;
+	
+	function __constructor()
+	{
+		mysql_connect($host,$uzytkownik,$haslo);
+		return $mysql_sprawdz = true;	
 	}
-	function polacz(){
-		include("config.php");
-		@mysql_connect($host,$uzytkownik,$haslo);
-		return $mysql_sprawdz = true;
-	}
+
 	function baza($bazadanych){
-		$this->polacz();
 		mysql_select_db($bazadanych);
 		return $baza_sprawdz = true;
 	}
@@ -27,7 +23,7 @@ class mysql{
 		$wynik = mysql_fetch_array($pytanie);
 		return $wynik;
 	}
-	function rozlacz() {
+	function __destructor() {
 		mysql_close();
 	}
 }
@@ -44,7 +40,9 @@ $pytanko = mysql_query("INSERT INTO sms_historia (
 
 
 function aktualizacjawallet1($id_user,$cost){
-	$wallet1 = mysql_query("SELECT `wallet1` FROM `konta` WHERE `id_user` = '$id_user'"); // tu cos zjebane...
+	$sql = "SELECT 'wallet1' FROM 'konta' WHERE id_user=$id_user";
+	$wallet1 = mysql_query($sql); // tu cos zjebane...
+	echo "<br>$wallet1<br>$cost";
 	//$wallet1 = 1; //debug
 	$wallet1 += $cost; //0+1=12?? WTF!!!
 	mysql_query("UPDATE konta SET `wallet1` = '$wallet1' WHERE `id_user` = '$id_user'");
