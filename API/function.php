@@ -1,13 +1,12 @@
 <?php
 //Edit by https://github.com/Axel360x/ Rafał
-include ("config.php");
+include ("config.php"); //niepowinno byc udostepnione czy cos?
 class SQL{
 	
 	private $dbHandle = null;
 	
 	function __construct()
 	{
-		include ("config.php");
 		$dbHandle = mysql_connect($db_host, $db_user, $db_password);
 	}
 	
