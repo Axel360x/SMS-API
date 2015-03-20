@@ -3,6 +3,7 @@
 	if($_GET){   
    // Filtracja przesłanych danych 
 		include ("function.php");
+		include ("config.php");
 		$db = new SQL();
 		$db->SetDatabase($db_sms);
 		
@@ -13,7 +14,7 @@
 			$buyer = urldecode($_GET['buyer']);
 			$rezultat = $db->Query("SELECT 'wallet1' FROM 'konta' WHERE 'id_user'=$iduser");
 			
-			if(GetNumberOfRows($rezultat) == 0) die("Niepoprawny numer ID!"); //podales zle id
+			if($db->GetNumberOfRows($rezultat) == 0) die("Niepoprawny numer ID!"); //podales zle id
 			
 			//list($wallet1) = $db->GetTable($rezultat); // tworze smienna $wallet1 //autoryzacja zmiennej //!!PO CO TO?!!//	//BYL CEL!!//
 			unset($rezultat); // czyszczenie tablicy
@@ -22,7 +23,7 @@
 			
 			$rezultat = $db->Query("SELECT * FROM 'sms_pay' WHERE 'id_pay'=$idsms");
 			
-			if(GetNumberOfRows($rezultat) == 0) die("Błąd 1471!"); //brak takiego id_pay - 1471
+			if($db->GetNumberOfRows($rezultat) == 0) die("Błąd 1471!"); //brak takiego id_pay - 1471
 			
 			list(, $acc_id, $sufix, $numer, $cost, $inter) = $db->GetTable($rezultat);
 			unset($rezultat); // czyszczenie tablicy
