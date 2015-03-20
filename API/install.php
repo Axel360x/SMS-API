@@ -29,13 +29,14 @@ try {
     // sql to create table
     $sql = "CREATE TABLE IF NOT EXISTS konta (
     id INT(3) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+	login VARCHAR(30) NOT NULL,
+	email VARCHAR(40) NOT NULL,
     firstname VARCHAR(30) NOT NULL,
     lastname VARCHAR(30),
-	login VARCHAR(30) NOT NULL,
 	password VARCHAR(32) NOT NULL,
-    email VARCHAR(40) NOT NULL
-    )";
-
+	reg_date TIMESTAMP
+    )";	
+	
     // use exec() because no results are returned
     $conn->exec($sql);
     echo "Table konta created successfully<br>";
@@ -110,7 +111,7 @@ catch(PDOException $e)
     }
 
 try {
-    // sql to create table
+    // sql to insert table
     $sql = "INSERT INTO sms_pay (id_acc, sufix, numer, cost, inter) VALUES
 	(20397, 'TAB', 7155, 1, 0),
 	(20398, 'TAB', 7955, 9, 0),
@@ -130,7 +131,7 @@ catch(PDOException $e)
     }
 
 try {
-    // sql to create table
+    // sql to insert table
     $sql = "INSERT INTO sms_pay (sufix, numer, cost, inter) VALUES
 	('MINE', 72480, 2, 1),
 	('MINE', 73480, 3, 1);";
@@ -140,6 +141,21 @@ try {
     $conn->exec($sql);
 	
     echo "Table sms_pay part 2 (last) insert successfully<br>";
+    }
+catch(PDOException $e)
+    {
+    echo $sql . "<br>" . $e->getMessage();
+    }
+	
+try {
+    // sql to insert table	
+    $sql = "INSERT INTO konta (login, email, firstname, password) VALUES
+	('MARVIN', 'marvin1994pl@gmail.pl', 'Marcin', '202cb962ac59075b964b07152d234b70'),
+	('Alex', 'test@test.pl', 'Rafał', '202cb962ac59075b964b07152d234b70');";
+    // use exec() because no results are returned
+    $conn->exec($sql);
+	
+    echo "Table konta insert successfully<br>";
     }
 catch(PDOException $e)
     {
