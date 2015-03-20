@@ -1,9 +1,9 @@
 <?php
 //baza danych 
-$host = 'localhost';
-$uzytkownik = 'root';
-$haslo = '';
-$bazadanych = 'sms';
+$db_host = 'localhost';
+$db_user = 'root';
+$db_password = '';
+$db_sms = 'sms';
 //dane do sms
-$config_homepay_usr_id=0;
+$config_homepay_usr_id=3078;
 ?>

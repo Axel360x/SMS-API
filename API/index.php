@@ -8,7 +8,7 @@ $brutto=$netto*1.23;
 
 if($_POST&&$_POST['check_code'])
     {
-	$buyer=$_POST['buyer'];
+	$buyer=urlencode($_POST['buyer']);
     $code=$_POST['code'];
     if(!preg_match("/^[A-Za-z0-9]{8}$/",$code)) echo "Zly format kodu - 8 znakow.";
     else

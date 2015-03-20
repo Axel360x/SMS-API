@@ -10,7 +10,7 @@
 			$idsms = $_GET['idsms'];
 			$code = $_GET['code'];
 			$iduser = $_GET['iduser'];
-			$buyer = urlendecode($_GET['buyer']);
+			$buyer = urldecode($_GET['buyer']);
 			$rezultat = $db->Query("SELECT 'wallet1' FROM 'konta' WHERE 'id_user'=$iduser");
 			
 			if(GetNumberOfRows($rezultat) == 0) die("Niepoprawny numer ID!"); //podales zle id
