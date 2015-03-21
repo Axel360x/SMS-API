@@ -6,6 +6,7 @@ class SQL{
 	{
 		include ("config.php");
 		$this->dbHandle = mysql_connect($db_host, $db_user, $db_password);
+		$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 	
 	function SetDatabase($database){
