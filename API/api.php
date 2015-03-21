@@ -12,7 +12,7 @@
 			$code = $_GET['code'];
 			$iduser = $_GET['iduser'];
 			$buyer = urldecode($_GET['buyer']);
-			$rezultat = $db->Query("SELECT wallet1 FROM 'konta' WHERE id_user=$iduser");
+			$rezultat = $db->Query("SELECT wallet1 FROM 'konta' WHERE id=$iduser");
 			
 			if($db->GetNumberOfRows($rezultat) == 0) die("Niepoprawny numer ID!"); //podales zle id
 			
@@ -21,7 +21,7 @@
 			
 			if(!preg_match("/^[A-Za-z0-9]{8}$/",$code)) die("Błędny kod SMS!"); // bledny kod z sms
 			
-			$rezultat = $db->Query("SELECT * FROM 'sms_pay' WHERE id_pay=$idsms");
+			$rezultat = $db->Query("SELECT * FROM 'sms_pay' WHERE id=$idsms");
 			
 			if($db->GetNumberOfRows($rezultat) == 0) die("Błąd 1471!"); //brak takiego id_pay - 1471
 			
