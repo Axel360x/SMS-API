@@ -26,9 +26,9 @@ class SQL{
 	}
 	
 	function Wallet1Update($id_user,$cost){
-		$wallet1 = $this->Query("SELECT wallet1 FROM `konta` WHERE id_user=$id_user");
+		$wallet1 = $this->Query("SELECT wallet1 FROM `konta` WHERE id=$id_user");
 		$wallet1 += $cost;
-		$this->Query("UPDATE konta SET `wallet1`=$wallet1 WHERE id_user=$id_user");
+		$this->Query("UPDATE konta SET `wallet1`=$wallet1 WHERE id=$id_user");
 	}
 	
 	function SmsHistory($id_user,$code,$cost,$buyer) {
