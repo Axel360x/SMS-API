@@ -1,6 +1,6 @@
 <?php
 class SQL{
-	private $dbHandle = null;
+	private $dbHandle = 1337;
 	
 	function __construct()
 	{
